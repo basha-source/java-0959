@@ -1,0 +1,125 @@
+//SANKE--QUESTION
+//SHAIK JABBAR BASHA
+class Customer {
+    private String name;
+    private int accountNumber;
+    private double satisfactionRating;
+
+    public Customer(String name, int accountNumber, double satisfactionRating) {
+        this.name = name;
+        this.accountNumber = accountNumber;
+        this.satisfactionRating = satisfactionRating;
+    }
+
+    public void placeOrder(Order order) {
+        System.out.println(name + " placed an order with ID: " + order.getOrderId());
+    }
+
+    public void trackOrder(Order order) {
+        System.out.println("Order " + order.getOrderId() + " is currently " + order.getStatus());
+    }
+
+    public void provideFeedback(double rating) {
+        this.satisfactionRating = rating;
+        System.out.println(name + " provided feedback. New satisfaction rating: " + rating);
+    }
+}
+
+// Order class
+class Order {
+    private int orderId;
+    private String boxSize;
+    private String snakeType;
+    private String status;
+
+    public Order(int orderId, String boxSize, String snakeType) {
+        this.orderId = orderId;
+        this.boxSize = boxSize;
+        this.snakeType = snakeType;
+        this.status = "Processing";
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public double calculateCost() {
+        // Simplified cost calculation
+        return boxSize.length() * 10 + snakeType.length() * 20;
+    }
+
+    public void updateStatus(String status) {
+        this.status = status;
+        System.out.println("Order " + orderId + " status updated to " + status);
+    }
+
+    public void generateInvoice() {
+        System.out.println("Invoice for Order " + orderId + ":");
+        System.out.println("Box Size: " + boxSize);
+        System.out.println("Snake Type: " + snakeType);
+        System.out.println("Total Cost: $" + calculateCost());
+    }
+}
+
+// CarrierSnake class
+class CarrierSnake {
+    private int id;
+    private double speed;
+    private int capacity;
+
+    public CarrierSnake(int id, double speed, int capacity) {
+        this.id = id;
+        this.speed = speed;
+        this.capacity = capacity;
+    }
+
+    public void transportOrder(Order order) {
+        System.out.println("Carrier Snake " + id + " is transporting order " + order.getOrderId());
+    }
+
+    public boolean checkAvailability() {
+        // Simplified availability check
+        return true;
+    }
+
+    public void reportLocation() {
+        // Simplified location reporting
+        System.out.println("Carrier Snake " + id + " is at the dispatch center.");
+    }
+}
+
+// Main class to demonstrate the interactions
+public class SnakeBoxFactory {
+    public static void main(String[] args) {
+        Customer customer = new Customer("Alice", 1001, 4.5);
+        Order order = new Order(2001, "Large", "Python");
+        CarrierSnake carrierSnake = new CarrierSnake(1, 10.5, 5);
+
+        customer.placeOrder(order);
+        order.generateInvoice();
+        carrierSnake.transportOrder(order);
+        carrierSnake.reportLocation();
+        order.updateStatus("Shipped");
+        customer.trackOrder(order);
+        customer.provideFeedback(4.8);
+    }
+}
+
+OUTPUT:
+java -cp /tmp/zrLoWd4OwU/SnakeBoxFactory
+Alice placed an order with ID: 2001
+Invoice for Order 2001:
+Box Size: Large
+Snake Type: Python
+Total Cost: $170.0
+Carrier Snake 1 is transporting order 2001
+Carrier Snake 1 is at the dispatch center.
+Order 2001 status updated to Shipped
+Order 2001 is currently Shipped
+Alice provided feedback. New satisfaction rating: 4.8
+
+=== Code Execution Successful ===
