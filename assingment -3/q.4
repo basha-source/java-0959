@@ -1,0 +1,87 @@
+//basha reg:192325059
+//AI&ml
+import java.util.Scanner;
+
+public class MadLibs {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for inputs
+        System.out.print("Enter a name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter an age: ");
+        int age = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline left by nextInt()
+        System.out.print("Enter a city: ");
+        String city = scanner.nextLine();
+
+        System.out.print("Enter an animal: ");
+        String animal = scanner.nextLine();
+
+        System.out.print("Enter a verb (present tense): ");
+        String verb = scanner.nextLine();
+
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        System.out.print("Enter a temperature: ");
+        double temperature = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline left by nextDouble()
+
+        System.out.print("Enter an adjective: ");
+        String adjective = scanner.nextLine();
+
+        System.out.print("Enter a type of food: ");
+        String food = scanner.nextLine();
+
+        System.out.print("Enter a color: ");
+        String color = scanner.nextLine();
+
+        // Perform calculations (just for example)
+        int nextAge = age + 1;
+        double halfTemperature = temperature / 2.0;
+
+        // Generate the story with user inputs
+        System.out.println("\nStory:");
+        System.out.println("Once upon a time, there was a person named " + name + ".");
+        System.out.println(name + " lived in " + city + " and was " + age + " years old.");
+        System.out.println("One day, " + name + " found a " + animal + " in the backyard.");
+        System.out.println("It was " + color + " and " + adjective + ", and it liked to " + verb + " all day long.");
+        System.out.println("In one year, " + name + " would be " + nextAge + " years old.");
+        System.out.println("The temperature outside was " + temperature + " degrees Celsius, which felt like " + halfTemperature + " degrees Fahrenheit.");
+        System.out.println("While walking in the park, " + name + " decided to have " + number + " " + food + "s for lunch.");
+        System.out.println("And they lived happily ever after.");
+
+        // Close the scanner
+        scanner.close();
+    }
+}
+
+
+
+OUT PUT:
+Enter a name: basha
+Enter an age: 20
+Enter a city: chennai
+Enter an animal: boar
+Enter a verb (present tense): eating
+Enter a number: 
+124
+Enter a temperature: 30
+Enter an adjective: good
+Enter a type of food: rice
+Enter a color: white
+
+Story:
+Once upon a time, there was a person named basha.
+basha lived in chennai and was 20 years old.
+One day, basha found a boar in the backyard.
+It was white and good, and it liked to eating all day long.
+In one year, basha would be 21 years old.
+The temperature outside was 30.0 degrees Celsius, which felt like 15.0 degrees Fahrenheit.
+While walking in the park, basha decided to have 124 rices for lunch.
+And they lived happily ever after.
+
+=== Code Execution Successful ===
