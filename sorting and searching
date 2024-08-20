@@ -1,0 +1,84 @@
+program:
+package sortpackage;
+
+import java.util.Scanner;
+
+public class sortandsearch {
+
+    public static void main(String[] args) {
+        int[] numbers = {40, 7, 59, 4, 1};
+        System.out.println("Before sorting:");
+        displayValues(numbers);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number to search for: ");
+        int searchNumber = scanner.nextInt();
+        int position = linearSearch(numbers, searchNumber);
+        if (position != -1) {
+            System.out.println("Number " + searchNumber + " found at position " + position + " before sorting.");
+        } else {
+            System.out.println("Number " + searchNumber + " not found before sorting.");
+        }
+        bubbleSort(numbers);
+
+        System.out.println("After sorting:");
+        displayValues(numbers);
+        position = linearSearch(numbers, searchNumber);
+        if (position != -1) {
+            System.out.println("Number " + searchNumber + " found at position " + position + " after sorting.");
+        } else {
+            System.out.println("Number " + searchNumber + " not found after sorting.");
+        }
+
+        scanner.close();
+    }
+    static void displayValues(int[] numbers) {
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+    static void bubbleSort(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            boolean flag = false;
+            for (int j = 0; j < numbers.length - 1; j++) {
+                if (numbers[j] > numbers[j + 1]) {
+                    int temp = numbers[j];
+                    numbers[j] = numbers[j + 1];
+                    numbers[j + 1] = temp;
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                return;
+            }
+        }
+    }
+    static int linearSearch(int[] numbers, int searchNumber) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == searchNumber) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+
+
+output:
+
+Before sorting:
+40 7 59 4 1 
+Enter the number to search for: 1
+Number 1 found at position 4 before sorting.
+After sorting:
+1 4 7 40 59 
+Number 1 found at position 0 after sorting.
+
+=== Code Execution Successful ===
+
+
+
+
+
+
