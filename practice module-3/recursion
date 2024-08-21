@@ -1,0 +1,20 @@
+public class Linear {
+    public static double factorial(double n) {
+        if (n <= 1) {
+            return 1; // base case
+        } else {
+            return n * factorial(n - 1); // recursive case
+        }
+    }
+
+    public static void main(String[] args) {
+        double d = 5.0;
+        double result = factorial(d);
+        System.out.printf("Factorial [%f] of [%f]%n", result, d);
+    }
+}
+output:
+
+Factorial [120.000000] of [5.000000]
+
+=== Code Execution Successful ===
