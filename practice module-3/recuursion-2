@@ -1,0 +1,33 @@
+public class NonLinear {
+    public static double fibonacci(double n) {
+        if (n < 2) {
+            return n; // base case
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2); // recursive case
+        }
+    }
+
+    public static void main(String[] args) {
+        double d;
+        if (args.length > 0) {
+            d = Double.parseDouble(args[0]);
+        } else {
+            d = 5.0;
+        }
+        for (double i = 0; i <= d; i++) {
+            double result = fibonacci(i);
+            System.out.printf("Fibonacci index [%f] value [%f]%n", i, result);
+        }
+    }
+}
+
+output:
+java -cp /tmp/v6A26RBj1t/NonLinear
+Fibonacci index [0.000000] value [0.000000]
+Fibonacci index [1.000000] value [1.000000]
+Fibonacci index [2.000000] value [1.000000]
+Fibonacci index [3.000000] value [2.000000]
+Fibonacci index [4.000000] value [3.000000]
+Fibonacci index [5.000000] value [5.000000]
+
+=== Code Execution Successful ===
