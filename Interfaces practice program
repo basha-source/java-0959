@@ -1,0 +1,32 @@
+abstract interface Shape {
+    double area();
+    double perimeter();
+}
+class Circle implements Shape {
+    private double radius;
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+    public double perimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle(5);
+        System.out.println("Circle Area: " + circle.area());
+        System.out.println("Circle Perimeter: " + circle.perimeter());
+
+    }
+}
+
+
+output:
+java -cp /tmp/rtniBylZ5M/Main
+Circle Area: 78.53981633974483
+Circle Perimeter: 31.41592653589793
+
+=== Code Execution Successful ===
