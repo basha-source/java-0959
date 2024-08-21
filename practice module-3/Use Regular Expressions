@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+public class Employee {
+    private final String name;
+    private final String username;
+    private final String email;
+    private String password;
+    public Employee() {
+        this.name = setName();
+        this.username = setUserName(name);
+        this.email = setEmail(username);
+        this.password = setPassword(username);
+    }
+    @Override
+    public String toString() {
+        return "Employee Details\n" +
+                "Name : " + name + "\n" +
+                "Username : " + username + "\n" +
+                "Email : " + email + "\n" +
+                "Initial Password : " + password;
+    }
+    private int countChars(String str, char ch) {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ch) {
+                count++;
+            }
+        }
+        return count;
+    }
+    private String setName() {
+        Scanner scanner = new Scanner(System.in);
+        String name;
+        String regex = "^[a-zA-Z]+\\s[a-zA-Z]+$";
+        do {
+            System.out.print("Enter your full name (first and last name): ");
+            name = scanner.nextLine();
+            if (!name.matches(regex)) {
+                System.out.println("Incorrect format for name. Please enter a first name followed by a space and a surname.");
+            }
+        } while (!name.matches(regex));
+        
+        return name;
+    }
+    private String setUserName(String name) {
+        return name.toLowerCase().replace(" ", ".");
+    }
+    private String setEmail(String username) {
+        String[] parts = username.split("\\.");
+        return parts[0].charAt(0) + parts[1] + "@oracleacademy.Test";
+    }
+    private String setPassword(String username) {
+        String password = username.length() >= 8 ? username.substring(0, 8) : String.format("%-8s", username).replace(' ', '*');
+        password = password.replaceAll("[aeiou]", "*");
+        char[] passwordChars = password.toCharArray();
+        for (int i = 0; i < passwordChars.length; i++) {
+            if (Character.isAlphabetic(passwordChars[i])) {
+                passwordChars[i] = Character.toUpperCase(passwordChars[i]);
+                break;
+            }
+        }
+        return new String(passwordChars);
+    }
+
+    public static void main(String[] args) {
+        Employee employee = new Employee();
+        System.out.println(employee);
+    }
+}
+
+
+
+output:
+
+Enter your full name (first and last name): shaik jabbar
+Employee Details
+Name : shaik jabbar
+Username : shaik.jabbar
+Email : sjabbar@oracleacademy.Test
+Initial Password : Sh**k.j*
