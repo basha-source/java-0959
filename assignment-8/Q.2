@@ -1,0 +1,99 @@
+name: shaik jabbar basha
+regno:192325059
+
+creating the databases:-
+DESCRIBE job_grades;
+DESCRIBE job_history;
+DESCRIBE employees;
+DESCRIBE jobs;
+DESCRIBE departments;
+DESCRIBE locations;
+DESCRIBE countries;
+DESCRIBE regions;
+
+
+creating the tables:-
+
+-- Creating the 'job_grades' table
+CREATE TABLE job_grades (
+    grade_level VARCHAR2(10) PRIMARY KEY,
+    low_salary NUMBER,
+    high_salary NUMBER
+);
+
+-- Creating the 'job_history' table
+CREATE TABLE job_history (
+    employee_id NUMBER,
+    start_date DATE,
+    end_date DATE,
+    job_id VARCHAR2(10),
+    department_id NUMBER,
+    PRIMARY KEY (employee_id, start_date),
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (job_id) REFERENCES jobs(job_id),
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+-- Creating the 'employees' table
+CREATE TABLE employees (
+    employee_id NUMBER PRIMARY KEY,
+    first_name VARCHAR2(50),
+    last_name VARCHAR2(50),
+    email VARCHAR2(100) UNIQUE,
+    phone_number VARCHAR2(20),
+    hire_date DATE,
+    job_id VARCHAR2(10),
+    salary NUMBER,
+    commission_pct NUMBER,
+    manager_id NUMBER,
+    department_id NUMBER,
+    FOREIGN KEY (job_id) REFERENCES jobs(job_id),
+    FOREIGN KEY (manager_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+-- Creating the 'jobs' table
+CREATE TABLE jobs (
+    job_id VARCHAR2(10) PRIMARY KEY,
+    job_title VARCHAR2(35),
+    min_salary NUMBER,
+    max_salary NUMBER
+);
+
+-- Creating the 'departments' table
+CREATE TABLE departments (
+    department_id NUMBER PRIMARY KEY,
+    department_name VARCHAR2(30),
+    manager_id NUMBER,
+    location_id NUMBER,
+    FOREIGN KEY (manager_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (location_id) REFERENCES locations(location_id)
+);
+
+-- Creating the 'locations' table
+CREATE TABLE locations (
+    location_id NUMBER PRIMARY KEY,
+    street_address VARCHAR2(100),
+    postal_code VARCHAR2(12),
+    city VARCHAR2(30),
+    state_province VARCHAR2(25),
+    country_id VARCHAR2(2),
+    FOREIGN KEY (country_id) REFERENCES countries(country_id)
+);
+
+-- Creating the 'countries' table
+CREATE TABLE countries (
+    country_id VARCHAR2(2) PRIMARY KEY,
+    country_name VARCHAR2(40),
+    region_id NUMBER,
+    FOREIGN KEY (region_id) REFERENCES regions(region_id)
+);
+
+-- Creating the 'regions' table
+CREATE TABLE regions (
+    region_id NUMBER PRIMARY KEY,
+    region_name VARCHAR2(25)
+);
+
+
+
